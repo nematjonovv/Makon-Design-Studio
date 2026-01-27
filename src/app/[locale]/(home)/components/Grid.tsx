@@ -63,7 +63,7 @@ function Grid() {
                 direction="up"
                 duration={1}
                 className="text-[48px] text-white font-clash font-semibold flex flex-col items-start"
-                startCounting
+                startWhen={true}
               />
             }
             <span className="text-[16px] text-(--secondarytext)">
