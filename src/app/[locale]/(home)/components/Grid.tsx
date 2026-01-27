@@ -16,7 +16,7 @@ function Grid() {
                 direction="up"
                 duration={1}
                 className="text-[48px] text-white font-clash font-semibold flex flex-col items-start"
-                startWhen
+                startWhen={true}
                 prefix="+"
               />
             }
@@ -34,7 +34,7 @@ function Grid() {
                 direction="up"
                 duration={1}
                 className="text-[48px] text-white font-clash font-semibold flex flex-col items-start"
-                startWhen
+                startWhen={true}
                 prefix="+"
               />
             } <span>{t("client")}</span>
