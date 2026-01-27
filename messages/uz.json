@@ -1,0 +1,104 @@
+{
+  "Header": {
+    "menu": [
+      { "title": "Biz haqimizda", "href": "/about" },
+      { "title": "Xizmatlar", "href": "/services" },
+      { "title": "Loyihalarimiz", "href": "/projects" },
+      { "title": "Bog‘lanish", "href": "/contact" }
+    ],
+    "cta": "Ariza qoldirish"
+  },
+  "NotFound": {
+    "title": "Sahifa topilmadi",
+    "description": "Kechirasiz, siz qidirayotgan sahifa mavjud emas.",
+    "back": "Bosh sahifaga qaytish"
+  },
+  "Hero": {
+    "title": "Hayotingiz uchun qulay makonlar",
+    "subtitle": "Biz interyer dizaynini sizning didingiz va turmush tarzingizga mos holda yaratamiz."
+  },
+  "About": {
+    "badge": "Biz haqimizda",
+    "title": "Biz interyerlarni kundalik hayot jarayonlaridan kelib chiqib loyihalaymiz.",
+    "subtitle": "Biz interyer loyihalarini ehtiyoj va makon xususiyatlariga asoslanib yaratamiz.",
+    "success": "Muvaffaqiyatli loyihalar",
+    "client": "Mamnun mijozlar",
+    "experience": "Yil tajriba",
+    "individual": "Individual yondashuv",
+    "individual-sub": "Har bir loyiha uchun alohida yechim"
+  },
+  "Services": {
+    "badge": "Xizmatlar",
+    "title": "Biz taklif qiladigan xizmatlar"
+  },
+  "Projects": {
+    "badge": "Loyihalar",
+    "title": "Biz yaratgan makonlar"
+  },
+  "Team": {
+    "badge": "Bizning jamoa",
+    "title": "Jamoamiz bilan tanishing"
+  },
+  "Process": {
+    "badge": "Bosqichlar",
+    "title": "Ish jarayoni"
+  },
+  "Testimonial": {
+    "title": "Mijozlar fikri",
+    "koroche": "Qisqacha aytganda",
+    "testimonial": [
+      {
+        "id": 1,
+        "video": "",
+        "avatar": "",
+        "name": "Akmal Raxmonov",
+        "role": "Stomatologiya klinikasi rahbari",
+        "text": "Qisqacha aytganda, loyiha juda professional darajada bajarildi. Dizayn yechimlari nafaqat chiroyli, balki funksional jihatdan ham mukammal. Jamoa bilan ishlash juda qulay bo‘ldi."
+      },
+      {
+        "id": 2,
+        "video": "",
+        "avatar": "",
+        "name": "Dilnoza Karimova",
+        "role": "Xususiy maktab asoschisi",
+        "text": "Interyer dizayni orqali muhit tubdan o‘zgardi. Endi maktabimiz yanada zamonaviy, yorug‘ va qulay bo‘lib qoldi. Natijadan juda mamnunmiz."
+      },
+      {
+        "id": 3,
+        "video": "",
+        "avatar": "",
+        "name": "Javlonbek Ismoilov",
+        "role": "IT kompaniya direktori",
+        "text": "Loyiha jarayoni tizimli, rejalashtirilgan va shaffof olib borildi. Har bir detal professional yondashuv bilan ishlab chiqildi."
+      },
+      {
+        "id": 4,
+        "video": "",
+        "avatar": "",
+        "name": "Madina Tursunova",
+        "role": "Restoran biznesi egasi",
+        "text": "Dizayn konsepsiyasi mijozlar oqimiga bevosita ta’sir ko‘rsatdi. Interyer marketing vositasiga aylandi. Juda to‘g‘ri qaror bo‘lgan."
+      },
+      {
+        "id": 5,
+        "video": "",
+        "avatar": "",
+        "name": "Sardor Yo‘ldoshev",
+        "role": "Ko‘chmas mulk investori",
+        "text": "Loyiha nafaqat estetik, balki investitsion jihatdan ham foydali bo‘ldi. Dizayn qiymatni oshirdi."
+      }
+    ]
+  },
+  "Contact": {
+    "badge": "Bog‘lanish",
+    "title": "Sizga yordam berishga doimo tayyormiz",
+    "formTitle":"Bepul konsultatsiya oling",
+    "PHname": "Ismingizni kiriting",
+    "PHservice": "Qiziqtirgan xizmatni tanlang",
+    "PHcomment": "Qisqa izoh qoldiring",
+    "PHwhere": "Makon studiyasi haqida qayerdan eshitdingiz?"
+  },
+  "components": {
+    "readmore": "Batafsil"
+  }
+}
