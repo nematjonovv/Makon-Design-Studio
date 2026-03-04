@@ -16,7 +16,7 @@ interface StarProps {
   twinkleSpeed: number | null;
 }
 
-interface StarBackgroundProps {
+  interface StarBackgroundProps {
   starDensity?: number;
   allStarsTwinkle?: boolean;
   twinkleProbability?: number;

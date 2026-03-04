@@ -4,8 +4,8 @@ type LocaleText = {
 };
 
 export interface ITeamMember {
-  id: string;
-  image: string;
+  id: number;
   name: string;
-  role: LocaleText;
+  role: string;
+  photo: string;
 }

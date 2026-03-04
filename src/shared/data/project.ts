@@ -5,10 +5,10 @@ export const projects = [
     status: "completed", // concept | in_progress | completed
     category: "residential", // residential | commercial | hospitality | office
     publishedAt: "2025-11-10",
+    title: "Urban Loft Apartment — Toshkent",
 
     localeData: {
       uz: {
-        title: "Urban Loft Apartment — Toshkent",
         excerpt:
           "Shahar markazidagi loft uslubidagi kvartira. Beton faktura, tabiiy yog‘och va qora metall aksentlar asosida ochiq reja ishlab chiqildi.",
         seo: {
@@ -24,7 +24,6 @@ export const projects = [
           "Loft estetikasiga mos, funksional va tartibli yashash makoni yaratildi: kundalik hayot uchun qulay va vizual jihatdan toza.",
       },
       ru: {
-        title: "Urban Loft Apartment — Ташкент",
         excerpt:
           "Квартира в стиле лофт в центре города. Открытая планировка с фактурой бетона, натуральным деревом и чёрными металлическими акцентами.",
         seo: {

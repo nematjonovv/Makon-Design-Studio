@@ -100,5 +100,15 @@
   },
   "components": {
     "readmore": "Подробнее"
+  },
+  "ProjectDetails": {
+    "challenge": "Задача",
+    "solution": "Решение",
+    "result": "Результат",
+    "status": {
+      "completed": "Завершён",
+      "in_progress": "В процессе",
+      "pending": "Ожидается"
+    }
   }
 }

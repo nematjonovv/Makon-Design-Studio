@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 
@@ -22,9 +23,9 @@ function ReadMoreBtn({ href, which }: ButtonProps) {
   return (
     <Link
       href={href}
-      className={`bg-transparent text-(--text) rounded-xl text-[14px] hover:bg-(--button-hover) py-2.5 border border-(--border-strong) hover:border-(--border-strong) px-8 transition duration-150`}
+      className={`bg-transparent text-(--text) rounded-xl text-[14px] border border-transparent hover:border-(--border-strong) py-2.5 px-8 transition duration-300`}
     >
-      {t("readmore")}
+      {t("readmore")} {">"}
     </Link>
   );
 }

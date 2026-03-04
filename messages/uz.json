@@ -92,7 +92,7 @@
   "Contact": {
     "badge": "Bog‘lanish",
     "title": "Sizga yordam berishga doimo tayyormiz",
-    "formTitle":"Bepul konsultatsiya oling",
+    "formTitle": "Bepul konsultatsiya oling",
     "PHname": "Ismingizni kiriting",
     "PHservice": "Qiziqtirgan xizmatni tanlang",
     "PHcomment": "Qisqa izoh qoldiring",
@@ -100,5 +100,15 @@
   },
   "components": {
     "readmore": "Batafsil"
+  },
+  "ProjectDetails": {
+    "challenge": "Muammo",
+    "solution": "Yechim",
+    "result": "Natija",
+    "status": {
+      "completed": "Yakunlandi",
+      "in_progress": "Jarayonda",
+      "pending": "Kutilmoqda"
+    }
   }
 }

@@ -7,10 +7,11 @@ import Team from "./components/Team";
 import Process from "./components/Process";
 import Testimonial from "./components/Testimonial";
 import Contact from "./components/Contact";
+import AnimatedSection from "@/components/AnimationSection";
 
 function Home() {
   return (
-    <main>
+    <main className="">
       <Hero />
       <About />
       <Services />

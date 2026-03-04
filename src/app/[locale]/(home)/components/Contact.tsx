@@ -8,7 +8,7 @@ function Contact() {
   const t = useTranslations("Contact");
   // contactCard
   return (
-    <section className="container">
+    <section className="container mb-33">
       <Badge title={t("badge")} />
       <H2 title={t("title")} />
 

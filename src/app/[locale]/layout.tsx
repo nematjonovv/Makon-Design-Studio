@@ -19,13 +19,11 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <NextIntlClientProvider>
-      <AppRouterCacheProvider>
-        <ThemeProviderCustom>
-          <Header />
-          {children}
-          <Footer />
-        </ThemeProviderCustom>
-      </AppRouterCacheProvider>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </div>
     </NextIntlClientProvider>
   );
 }

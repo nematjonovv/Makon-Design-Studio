@@ -3,8 +3,12 @@ import { ThemeProviderCustom } from "@/Providers/ThemeProvider";
 import { poppins, clash, clashGrotesk } from "@/styles/fonts";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { NextIntlClientProvider } from "next-intl";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 export const metadata: Metadata = {
   title: "Makon | Interior Design Studio",
   icons: { icon: "/favicon.ico" },
@@ -19,6 +23,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${poppins.className} ${clash.variable} ${clashGrotesk.variable}`}
+      suppressHydrationWarning
     >
       <head>
         <link
@@ -32,7 +37,9 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
         {/* Site content */}
-        <div className="relative z-10">{children}</div>
+        <AppRouterCacheProvider>
+          <ThemeProviderCustom>{children}</ThemeProviderCustom>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

@@ -1,37 +1,71 @@
-type TLocaleData = {
-  title: string;
+interface ISeo {
+  metaTitle: string;
+  metaDescription: string;
+}
+
+interface ILocalizedFields {
+  seo: ISeo;
   excerpt: string;
-  seo: { metaTitle: string; metaDesc: string };
-  challange: string;
+  results: string;
   solution: string;
-  result: string;
-};
+  challenge: string;
+}
 
-type TCoverImage = {
-  src: string;
-  alt: { uz: string; ru: string };
-};
+interface ILocalizedContent {
+  ru: ILocalizedFields;
+  uz: ILocalizedFields;
+}
 
-type TFacts = {
+interface ILocation {
+  city: string;
+  country: string;
+}
+
+interface IFacts {
   year: number;
-  durationMonth: number;
   areaM2: number;
-  localtion: { city: string; country: string };
-  services: string[];
-};
-type TGalleryItem = {
-  src: string;
-  alt: { uz: string; ru: string };
-};
+  budget: number;
+  location: ILocation;
+}
 
-export interface IProjects {
-  id: "";
+interface IDesign {
+  style: string[];
+  palette: string[];
+  materials: string[];
+  keyFeatures: string[];
+}
+
+interface ICoverImage {
+  image_light: string;
+  image_dark: string;
+  image_alt: {
+    ru: string;
+    uz: string;
+  };
+}
+
+interface ICategory {
+  id: number;
+  title: string;
+}
+type GalleryImage = {
+  id: number;
+  image: string;
+  image_alt: {
+    uz: string;
+    ru: string;
+  };
+};
+export interface IProject {
+  id: number;
+  title: string;
+  categoryId: number;
   slug: string;
-  status: "concept" | "comppleted" | "in progess";
-  category: "residential" | "commercial" | "hospitality" | "office";
-  publishedAt: "2025-11-10";
-  localeData: { uz: TLocaleData; ru: TLocaleData };
-  coverImage: { light: TCoverImage; dark: TCoverImage };
-  gallery: TGalleryItem[];
-  facts: TFacts;
+  status: "completed" | "in_progress" | "pending";
+  localizedContent: ILocalizedContent;
+  facts: IFacts;
+  design: IDesign;
+  coverImage: ICoverImage;
+  category: ICategory;
+  gallery: GalleryImage[];
 }
