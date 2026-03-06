@@ -11,7 +11,7 @@ function CtaButton({ padding, fontSize, round }: CtaButtonProps) {
   const t = useTranslations("Header");
   return (
     <button
-      className={`bg-(--button-bg) border-(--border-strong) text-(--text) border cursor-pointer`}
+      className={`bg-(--button-bg) border-(--border-strong) text-(--text) border cursor-pointer sm:text-[10px] sm:flex-nowrap`}
       style={{
         padding: `${py}px ${px}px`,
         fontSize: `${fontSize}px`,

@@ -1,13 +1,26 @@
-export interface ITestimonial {
-  id: number;
-  avatar: string;
-  video: string;
-  uz: testimonialLocale;
-  ru: testimonialLocale;
+interface LocalizedString {
+  ru: string;
+  uz: string;
 }
 
-type testimonialLocale = {
+interface TestimonialLocalizedContent {
+  content: string;
+  position: string;
+}
+
+export interface ITestimonial {
+  id: number;
   name: string;
-  role: string;
-  text: string;
-};
+  localizedContent: {
+    ru: TestimonialLocalizedContent;
+    uz: TestimonialLocalizedContent;
+  };
+  photoUrl: string;
+  videoUrl: string;
+  altImage: {
+    image: LocalizedString;
+    video: LocalizedString;
+  };
+  photoPublicId: string;
+  videoPublicId: string;
+}

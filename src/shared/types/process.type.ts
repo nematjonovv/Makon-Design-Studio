@@ -4,7 +4,8 @@ interface IProcessStep {
   desc: string;
   icon: string; // image path or component
   position: {
-    x: string; // %, vw, or px
-    y: string;
+    desktop: { x: string; y: string };
+    mobile?: { x: string; y: string };
+    tablet?: { x: string; y: string };
   };
 }

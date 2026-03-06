@@ -11,7 +11,7 @@ import AnimatedSection from "@/components/AnimationSection";
 
 function Home() {
   return (
-    <main className="">
+    <main className="w-screen overflow-x-hidden">
       <Hero />
       <About />
       <Services />

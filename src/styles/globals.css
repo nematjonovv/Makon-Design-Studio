@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import "tailwindcss";
+
+@custom-variant tablet (@media (width >= 900px));
 * {
   box-sizing: border-box;
 }
@@ -60,6 +63,7 @@ body {
   overflow-x: hidden !important;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  width: 100vw;
 }
 
 .container-header {
@@ -147,7 +151,6 @@ body {
   }
 }
 
-
 /* globals.css ga qo'sh */
 
 @keyframes fade-up {
@@ -226,7 +229,25 @@ body {
 }
 
 /* Delay classlar */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-500 { animation-delay: 500ms; }
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-200 {
+  animation-delay: 200ms;
+}
+.delay-300 {
+  animation-delay: 300ms;
+}
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.header-hidden {
+  transform: translateX(100vw);
+  transition: all 0.3s ease-in-out;
+}
+
+.header-visible {
+  transform: translateX(100%);
+  transition: all 0.3s ease-in-out;
+}

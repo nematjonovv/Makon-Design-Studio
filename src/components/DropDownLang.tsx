@@ -52,7 +52,7 @@ export default function LangDropdown() {
     <Dropdown {...dropdownProps}>
       <Button
         type="text"
-        style={{ background: "transparent", color: "var(--text)" }}
+        style={{ background: "transparent", color: "var(--text)", padding: "0" }}
       >
         <Space>
           {currentLocale.toUpperCase()}

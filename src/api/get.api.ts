@@ -2,6 +2,7 @@ import { IServices } from "@/shared/types/service.type";
 import { apiFetch } from "./ApiFetch";
 import { ITeamMember } from "@/shared/types/team.type";
 import { IProject } from "@/shared/types/project.type";
+import { ITestimonial } from "@/shared/types/testimonial.type";
 
 interface ServiceResponse {
   success: boolean;
@@ -20,21 +21,26 @@ interface ProjectResponse {
 }
 
 export async function getServices(): Promise<ServiceResponse> {
-  const res = await apiFetch("/api/services", { cache: "no-store" })
+  const res = await apiFetch("/api/services", { next: { revalidate: 3600 } })
   return res.json()
 }
 
 export async function getTeam(): Promise<TeamResponse> {
-  const res = await apiFetch("/api/team", { cache: "no-store" })
+  const res = await apiFetch("/api/team", { next: { revalidate: 3600 } })
   return res.json()
 }
 
 export async function getProjects(): Promise<ProjectResponse> {
-  const res = await apiFetch("/api/projects", { cache: "no-store" })
+  const res = await apiFetch("/api/projects", { next: { revalidate: 3600 } })
   return res.json()
 }
 
 export async function getProjectBySlug(slug: string): Promise<{ success: boolean; data: IProject | null; }> {
-  const res = await apiFetch(`/api/projects/${slug}`, { cache: "no-store" })
+  const res = await apiFetch(`/api/projects/${slug}`, { next: { revalidate: 3600 } })
+  return res.json()
+}
+
+export async function getTestimonials(): Promise<{ success: boolean; data: ITestimonial[]; }> {
+  const res = await apiFetch("/api/testimonials", { next: { revalidate: 3600 } })
   return res.json()
 }

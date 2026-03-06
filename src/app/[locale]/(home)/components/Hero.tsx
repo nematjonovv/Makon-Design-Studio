@@ -7,23 +7,24 @@ function Hero() {
   const ctatitle = useTranslations("Header");
 
   return (
-    <section className="bg-(image:--hero-bg) w-screen h-screen bg-no-repeat bg-cover bg-center flex items-center bg-fixed">
-      <div className="mx-auto text-center max-w-350">
-          {
-            <BlurText
-              text={t("title")}
-              delay={100}
-              animateBy="words"
-              direction="top"
-              className="text-(--text) text-center font-clashGrotesk font-medium text-8xl mb-5 -z-10 justify-center"
-            />
-          }
+    <section className="bg-(image:--hero-bg) w-full h-screen bg-no-repeat bg-cover bg-center flex items-center bg-fixed overflow-x-auto">
+      <div className=" text-center container">
+        {
+          <BlurText
+            text={t("title")}
+            delay={100}
+            animateBy="words"
+            direction="top"
+            className="text-(--text) text-center font-clashGrotesk font-medium text-6xl
+             lg:text-8xl mb-5 -z-10 justify-center"
+          />
+        }
         <p className="text-(--secondarytext) font-clash text-xl max-w-150 mx-auto mb-7">
           {t("subtitle")}
         </p>
         <CtaButton
           fontSize={14}
-          padding={[15, 30]}
+          padding={[13, 30]}
           round={14}
         />
       </div>

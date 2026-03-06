@@ -15,7 +15,7 @@ function About() {
         <AnimatedSection animation="fade-up">
           <div className="text-center">
             <H2 title={t("title")} />
-            <p className="text-(--secondarytext) font-clash font-medium text-md mb-7 max-w-1/2.5">
+            <p className="text-(--secondarytext) font-clash font-medium  mb-7 max-w-1/2.5">
               {t("subtitle")}
             </p>
           </div>

@@ -1,25 +1,26 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
 
 import MinimalVideo, { MinimalVideoHandle } from "./Video";
-import { testimonials } from "@/shared/data/testimonial.data";
 import type { ITestimonial } from "@/shared/types/testimonial.type";
+import { getLocale, getTranslations } from "next-intl/server";
+import { getTestimonials } from "@/api/get.api";
+import { useLocale } from "next-intl";
+import { useTranslations } from "use-intl";
 
-export default function Testimonial() {
-  const t = useTranslations("Testimonial"); 
+function Testimonial() {
+  const t = useTranslations("Testimonial");
   const locale = useLocale() as "uz" | "ru";
-
-  const items = testimonials as ITestimonial[];
+  const [items, setItems] = useState<ITestimonial[] | []>([]);
 
   const [index, setIndex] = useState(0);
   const videoHandleRef = useRef<MinimalVideoHandle | null>(null);
 
   const active = useMemo(() => items[index], [items, index]);
-  const content = active[locale];
+  const content = active?.localizedContent[locale];
 
   const go = (nextIndex: number) => {
     videoHandleRef.current?.pause();
@@ -28,8 +29,19 @@ export default function Testimonial() {
     setIndex(safe);
   };
 
+
+  useEffect(() => {
+    getTestimonials().then(res => {
+      if (res.success) {
+        setItems(res.data);
+      }
+    }).catch(err => {
+      console.error("Failed to fetch testimonials:", err);
+    });
+  }, []);
+
   return (
-    <section className="container">
+    <section className="container mt-30 md:mt-0">
       <div className="flex flex-col justify-between gap-15">
         <div className="flex justify-between items-center">
           <h2 className="text-4xl text-(--text) font-clash font-semibold">
@@ -57,19 +69,19 @@ export default function Testimonial() {
           </div>
         </div>
 
-        <div className="flex justify-between gap-10">
-          <div className="w-1/2">
-            {active.video ? (
-              <MinimalVideo ref={videoHandleRef} src={active.video} />
+        <div className="flex justify-between gap-10 flex-col md:flex-row">
+          <div className="w-full md:w-1/2">
+            {active?.videoUrl ? (
+              <MinimalVideo ref={videoHandleRef} src={active.videoUrl} />
             ) : (
               <div className="w-full aspect-video rounded-3xl bg-(--surface)" />
             )}
           </div>
 
-          <div className="flex-1">
+          <div className="w-full md:flex-1">
             <div className="flex items-center">
               <Image
-                src={active.avatar || "/avatar.jpg"}
+                src={active?.photoUrl || "/avatar.jpg"}
                 className="rounded-xl mr-4"
                 alt="avatar"
                 width={50}
@@ -77,16 +89,16 @@ export default function Testimonial() {
               />
               <div>
                 <p className="text-(--text) font-normal text-lg">
-                  {content.name}
+                  {active?.name}
                 </p>
                 <p className="text-(--secondarytext) font-normal text-[12px] mt-0.5">
-                  {content.role}
+                  {content?.position}
                 </p>
               </div>
             </div>
 
             <p className="text-(--secondarytext) text-sm mt-3">
-              {t("koroche")}: {content.text}
+              {t("koroche")}: {content?.content}
             </p>
           </div>
         </div>
@@ -94,3 +106,6 @@ export default function Testimonial() {
     </section>
   );
 }
+
+
+export default Testimonial;

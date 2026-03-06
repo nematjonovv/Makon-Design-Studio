@@ -56,6 +56,7 @@ async function Services() {
                   alt="service image"
                   height={400}
                   width={400}
+                  priority
                   className="absolute object-contain -right-11 -bottom-20 hidden md:block"
                 />
               </div>

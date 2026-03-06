@@ -15,6 +15,7 @@ type ApiFetchOptions = Omit<RequestInit, "body"> & {
   body?: unknown;
   rawBody?: BodyInit;
   skipJson?: boolean;
+  next?: NextFetchRequestConfig;
 };
 
 export async function apiFetch(path: string, options: ApiFetchOptions = {}) {
