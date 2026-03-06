@@ -44,3 +44,8 @@ export async function getTestimonials(): Promise<{ success: boolean; data: ITest
   const res = await apiFetch("/api/testimonials", { next: { revalidate: 3600 } })
   return res.json()
 }
+
+// export async function getContactInfo(): Promise<{ success: boolean; data: ; }> {
+//   const res = await apiFetch("/api/contact-info", { next: { revalidate: 3600 } })
+//   return res.json()
+// }
