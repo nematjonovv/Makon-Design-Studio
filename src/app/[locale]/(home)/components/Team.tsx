@@ -11,18 +11,16 @@ async function Team() {
 
   const team: ITeamMember[] = await res?.data;
   return (
-    <section className="mt-35 container">
+    <section className="mt-35">
       <Badge title={t("badge")} />
       <H2 title={t("title")} />
 
-      {/* carousel */}
-      <div className="relative w-full flex scroll-container overflow-x-auto scrollnone mt-29">
+      <div className="relative w-full flex scroll-container overflow-x-auto scrollnone mt-29 container">
         <span
           className="pointer-events-none absolute left-0 top-0 h-full w-10 z-50
              bg-[linear-gradient(90deg,var(--surface),transparent)]"
         ></span>
 
-        {/* Right fade */}
         <span
           className="pointer-events-none absolute right-0 top-0 h-full w-10 z-50
              bg-[linear-gradient(270deg,var(--surface),transparent)]"

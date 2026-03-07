@@ -45,7 +45,7 @@ function Header() {
       </div>
 
 
-      <div className={`absolute inset-0 -top-11 flex overflow-hidden bg-(--bg) h-screen w-1/2 flex-col justify-center items-center gap-5  ${isOpen ? "header-visible" : "header-hidden"}`}>
+      <div className={`absolute border-l border-(--border-muted) inset-0 -top-11 flex overflow-hidden bg-(--bg) h-screen w-1/2 flex-col justify-center items-center gap-5  ${isOpen ? "header-visible" : "header-hidden"}`}>
         <Menu className="flex flex-col justify-center gap-10 px-4" />
         <div className="flex md:hidden flex-col items-center gap-5">
           <div className="flex items-center">

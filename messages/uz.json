@@ -1,7 +1,7 @@
 {
   "Header": {
     "menu": [
-      { "title": "Biz haqimizda", "href": "/about" },
+      { "title": "Biz haqimizda", "href": "/aboutus" },
       { "title": "Xizmatlar", "href": "/services" },
       { "title": "Loyihalarimiz", "href": "/projects" },
       { "title": "Bog‘lanish", "href": "/contact" }
@@ -110,5 +110,59 @@
       "in_progress": "Jarayonda",
       "pending": "Kutilmoqda"
     }
+  },
+  "Mission": {
+    "badge": "Missiya & Vizyon",
+    "title": "Maqsadimiz aniq",
+    "missiya": {
+      "subtitle": "Missiyamiz",
+      "title": "Nima uchun biz?",
+      "description": "Har bir mijozga o'ziga xos, funksional va estetik jihatdan mukammal makon yaratish. Biz faqat dizayn qilmaymiz — biz sizning hayot tarzingizni makonlarga ko'chiramiz."
+    },
+    "vizyonimiz": {
+      "subtitle": "Vizyonimiz",
+      "title": "Kelajakka nazar",
+      "description": "O'zbekistonda interior dizayn sohasida eng ishonchli va taniqli studiya bo'lish — bu bizning asosiy maqsadimiz."
+    }
+  },
+  "WhyUs": {
+    "badge": "Nega biz?",
+    "title": "Nima uchun aynan biz?",
+    "items": [
+      {
+        "number": "01",
+        "title": "Individual yondashuv",
+        "description": "Har bir loyiha noyob — shablondan foydalanmaymiz, faqat sizga xos dizayn yaratamiz."
+      },
+      {
+        "number": "02",
+        "title": "3D Vizualizatsiya",
+        "description": "Ishni boshlashdan oldin natijani ko'rasiz. Hech qanday kutilmagan narsa bo'lmaydi."
+      },
+      {
+        "number": "03",
+        "title": "Vaqtida topshirish",
+        "description": "Deadline'ga doim amal qilamiz. Vaqt — eng qimmatli resurs ekanini bilamiz."
+      },
+      {
+        "number": "04",
+        "title": "1 Yil kafolat",
+        "description": "Ishdan keyin 1 yil davomida xizmat ko'rsatamiz va har qanday savolga javob beramiz."
+      },
+      {
+        "number": "05",
+        "title": "Budjetga moslik",
+        "description": "Har qanday narx oralig'i uchun optimal yechim topamiz — sifatdan yutqazmasdan."
+      },
+      {
+        "number": "06",
+        "title": "To'liq nazorat",
+        "description": "Loyihaning boshidan oxirigacha — konsultatsiyadan topshirishgacha biz yoningizda."
+      }
+    ]
+  },
+  "CtaComponent": {
+    "title": "Yangi loyiha boshlashga tayyormisiz?",
+    "description": "Biz siz bilan muloqot qilishga doim tayyormiz."
   }
 }

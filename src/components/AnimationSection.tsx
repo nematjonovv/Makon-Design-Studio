@@ -5,7 +5,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 type Props = {
   children: React.ReactNode;
   animation?: "fade-up" | "fade-left" | "fade-right" | "zoom";
-  delay?: "delay-0" | "delay-150" | "delay-300" | "delay-500";
+  delay?: "delay-0" | "delay-150" | "delay-300" | "delay-500" | number;
   index?: number;
   className?: string;
 };
@@ -31,7 +31,7 @@ export default function AnimatedSection({
     // componentda:
     <div
       ref={ref}
-      className={`${isVisible ? animations[animation] : "opacity-0"} ${delay} ${className} `}
+      className={`${isVisible ? animations[animation] : "opacity-0"} ${typeof delay === "number" ? `delay-${delay}` : delay} ${className} `}
     >
       {children}
     </div>
