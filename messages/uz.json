@@ -164,5 +164,8 @@
   "CtaComponent": {
     "title": "Yangi loyiha boshlashga tayyormisiz?",
     "description": "Biz siz bilan muloqot qilishga doim tayyormiz."
+  },
+  "filter":{
+    "all":"Barchasi"
   }
 }
