@@ -18,9 +18,9 @@ async function AboutProject({ params }: Props) {
   const t = await getTranslations("ProjectDetails");
   return (
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
-      {/* ── HERO ─────────────────────────────────────────────── */}
+
       <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/7" }}>
-        <ProjectCover className="w-full h-full object-cover" coverImage={project.coverImage} alt={project.coverImage.image_alt[locale]} />
+        <ProjectCover priority={true} className="w-full h-full object-cover" coverImage={project.coverImage} alt={project.coverImage.image_alt[locale]} />
         {/* gradient overlay */}
         <div className="absolute inset-0 bg-linear-to-t from-(--bg) via-(--bg)/40 to-transparent" />
         <div className="absolute inset-0 bg-linear-to-r from-(--bg)/60 via-transparent to-transparent" />
