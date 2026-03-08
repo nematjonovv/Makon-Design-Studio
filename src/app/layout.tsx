@@ -5,10 +5,6 @@ import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { NextIntlClientProvider } from "next-intl";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 export const metadata: Metadata = {
   title: "Makon | Interior Design Studio",
   icons: { icon: "/favicon.ico" },
@@ -37,9 +33,7 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
         {/* Site content */}
-        <AppRouterCacheProvider>
-          <ThemeProviderCustom>{children}</ThemeProviderCustom>
-        </AppRouterCacheProvider>
+        <ThemeProviderCustom>{children}</ThemeProviderCustom>
       </body>
     </html>
   );

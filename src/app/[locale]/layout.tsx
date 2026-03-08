@@ -2,8 +2,6 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Header from "@/components/Header";
-import { ThemeProviderCustom } from "@/Providers/ThemeProvider";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import Footer from "@/components/Footer";
 type Props = {
   children: React.ReactNode;
