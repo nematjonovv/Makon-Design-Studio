@@ -1,3 +1,4 @@
+"use client"
 import Socials from "@/app/[locale]/(home)/components/Socials";
 import Adress from "./Adress";
 import Menu from "./Menu";
