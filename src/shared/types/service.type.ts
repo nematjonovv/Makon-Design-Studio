@@ -1,6 +1,12 @@
-interface LocaleContent {
+
+export interface Service {
+  id: number;
+  icon: string;
   title: string;
   desc: string;
+  features: string[];
+  duration: string;
+  steps: string[];
 }
 
 export interface IServices {
@@ -8,7 +14,7 @@ export interface IServices {
   icon: string;
   iconPublicId: string;
   localeData: {
-    ru: LocaleContent;
-    uz: LocaleContent;
+    ru: Service;
+    uz: Service;
   };
 }
