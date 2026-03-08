@@ -7,27 +7,21 @@ import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import PorjectsMasonry from "./PorjectsMasonry";
 
-function Filter() {
-  const [ctgrs, setCtgrs] = useState<{ id: number, title: string }[]>([]);
-  const [project, setProject] = useState<IProject[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<number | string | null>("all");
+function Filter({
+  projects,
+  categories
+}: {
+  projects: IProject[],
+  categories: { id: number, title: string }[]
+}) {
+  const [selectedCategory, setSelectedCategory] = useState<number | string>("all")
+
+  // useEffect va fetch YO'Q — data props'dan keladi
+  const filtered = selectedCategory === "all"
+    ? projects
+    : projects.filter(p => p.categoryId === selectedCategory)
   const t = useTranslations("Projects")
   const f = useTranslations("filter")
-  useEffect(() => {
-    getCategories().then((res) => {
-      setCtgrs(res.data);
-    }).catch((err) => {
-      console.error("Error fetching categories:", err);
-    });
-  }, []);
-
-  useEffect(() => {
-    getProjects().then((res) => {
-      setProject(res.data);
-    }).catch((err) => {
-      console.error("Error fetching projects:", err);
-    });
-  }, [])
 
 
 
@@ -42,14 +36,14 @@ function Filter() {
           {f("all")}
         </button>
 
-        {ctgrs?.map((ctgr) => (
+        {categories?.map((ctgr) => (
           <button onClick={() => setSelectedCategory(ctgr.id)} key={ctgr.id} className="bg-(--button-bg) hover:bg-(--button-hover) text-white rounded-full cursor-pointer px-4">
             {ctgr.title}
           </button>
         ))}
       </div>
 
-      <PorjectsMasonry data={project.filter((p) => selectedCategory === "all" || p.categoryId === selectedCategory)} />
+      <PorjectsMasonry data={filtered} />
     </div>
   );
 }

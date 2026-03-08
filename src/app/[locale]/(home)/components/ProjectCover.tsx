@@ -13,18 +13,20 @@ interface ICoverImage {
 function ProjectCover({
   coverImage,
   className,
-  alt
+  alt,
+  priority = false
 }: {
   coverImage: ICoverImage;
   className: string;
   alt: string;
+  priority: boolean;
 }) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
   const cover = isDark ? coverImage.image_dark : coverImage.image_light;
 
-  return <Image draggable={false} src={cover} alt={alt} className={className} width={500} height={500} />;
+  return <Image draggable={false} src={cover} alt={alt} className={className} fill priority={priority} />;
 }
 
 export default ProjectCover;

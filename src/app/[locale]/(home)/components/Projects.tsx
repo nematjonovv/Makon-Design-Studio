@@ -29,6 +29,7 @@ async function Projects() {
               className="relative w-full md lg:flex-1 lg:min-w-[calc(50%-80px)]  h-110 rounded-[30px] border border-(--card-border) overflow-hidden"
             >
               <ProjectCover
+                priority={i < 4}
                 key={i}
                 coverImage={p.coverImage}
                 className="text-white w-full h-full rounded-[30px]"

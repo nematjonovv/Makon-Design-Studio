@@ -7,16 +7,17 @@ import { useLocale } from "next-intl";
 function PorjectsMasonry({ data }: { data?: IProject[] }) {
   const locale = useLocale() as "ru" | "uz"
   return (
-    <div className="flex flex-wrap gap-10 container justify-between">
+    <div className="flex flex-wrap gap-5 container justify-between">
       {data?.map((p, i) => (
         <AnimatedSection
           animation={i % 2 === 0 ? "fade-right" : "fade-left"}
           delay={i % 2 === 0 ? "delay-150" : "delay-0"}
           index={i}
           key={p.id}
-          className="relative sm:w-full md:w-full lg:w-[calc(50%-80px)] h-110 rounded-[30px] border border-(--card-border) overflow-hidden"
+          className="relative sm:w-full md:w-full lg:w-[calc(50%-20px)] h-90 rounded-[30px] border border-(--card-border) overflow-hidden"
         >
           <ProjectCover
+            priority={i < 4}
             key={i}
             coverImage={p.coverImage}
             className="text-white w-full h-full rounded-[30px]"
