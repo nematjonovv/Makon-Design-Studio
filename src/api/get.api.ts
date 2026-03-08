@@ -20,6 +20,23 @@ interface ProjectResponse {
   data: IProject[];
 }
 
+export type ContactData = {
+  id: number;
+  phone: string;
+  phone2: string;
+  email: string;
+  addressUz: string;
+  addressRu: string;
+  instagram: string;
+  telegram: string;
+  youtube: string;
+  facebook: string;
+  mapUrl: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+
 export async function getServices(): Promise<ServiceResponse> {
   const res = await apiFetch("/api/services", { next: { revalidate: 60 } })
   return res.json()
@@ -50,7 +67,21 @@ export async function getCategories(): Promise<{ success: boolean; data: { id: n
   return res.json()
 }
 
-// export async function getContactInfo(): Promise<{ success: boolean; data: ; }> {
-//   const res = await apiFetch("/api/contact-info", { next: { revalidate: 60 } })
-//   return res.json()
-// }
+export async function getContactInfo(): Promise<{ success: boolean; data: ContactData; }> {
+  const res = await apiFetch("/api/contactinfo", { next: { revalidate: 60 } })
+  return res.json()
+}
+type ContactFormData = {
+  id?: number;
+  name: string;
+  number: string;
+  about: string;
+  heardFrom: string;
+  createdAt?: string;
+}
+
+
+export async function sendRequest(data: ContactFormData): Promise<{ success: boolean, message: string, data: ContactFormData }> {
+  const res = await apiFetch("/api/request", { method: "POST", body: data })
+  return res.json()
+}

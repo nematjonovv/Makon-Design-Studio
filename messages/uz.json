@@ -29,7 +29,12 @@
   },
   "Services": {
     "badge": "Xizmatlar",
-    "title": "Biz taklif qiladigan xizmatlar"
+    "title": "Biz taklif qiladigan xizmatlar",
+    "service": "Xizmat",
+    "features": "Xizmat ichiga nimalar kiradi?",
+    "process": "Ish jarayoni qanday ko‘rinishda bo‘ladi?",
+    "day": "kun",
+    "duration": "Davomiyligi"
   },
   "Projects": {
     "badge": "Loyihalar",
@@ -96,7 +101,8 @@
     "PHname": "Ismingizni kiriting",
     "PHservice": "Qiziqtirgan xizmatni tanlang",
     "PHcomment": "Qisqa izoh qoldiring",
-    "PHwhere": "Makon studiyasi haqida qayerdan eshitdingiz?"
+    "PHwhere": "Makon studiyasi haqida qayerdan eshitdingiz?",
+    "formSubTitle": "Bepul maslahat"
   },
   "components": {
     "readmore": "Batafsil"
@@ -165,7 +171,12 @@
     "title": "Yangi loyiha boshlashga tayyormisiz?",
     "description": "Biz siz bilan muloqot qilishga doim tayyormiz."
   },
-  "filter":{
-    "all":"Barchasi"
+  "filter": {
+    "all": "Barchasi"
+  },
+  "contactDecor": {
+    "ctaTitle": "",
+    "ctaTitle2": "bir qadam",
+    "ctaTitleAccent": "makonga"
   }
 }

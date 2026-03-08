@@ -1,16 +1,38 @@
-import { contactCard } from "@/shared/data/contact.data";
+import { ContactData } from "@/api/get.api";
 import Link from "next/link";
+import { BsFacebook, BsInstagram, BsTelegram, BsYoutube } from "react-icons/bs";
 
-function Socials() {
+function Socials({ contact }: { contact: ContactData | null }) {
   return (
-    <div className="flex items-center gap-3 sm:gap-5 flex-wrap">
-      {contactCard.socials.map((s) => (
-        <Link
-          key={s.key}
-          href={s.url}
-          className={`${s.icon} text-(--process-step-bg) bg-white p-0.5 px-1 rounded-full`}
-        />
-      ))}
+    <div className="flex items-center gap-1 sm:gap-5 flex-wrap">
+      {
+        contact?.instagram && (
+          <Link href={contact.instagram} target="_blank" className="text-black hover:text-black/50 hover:bg-(--card) transition-colors bg-white px-2 py-2 rounded-full">
+            <BsInstagram />
+          </Link>
+        )
+      }
+      {
+        contact?.telegram && (
+          <Link href={contact.telegram} target="_blank" className="text-black hover:text-black/50 hover:bg-(--card) transition-colors bg-white px-2 py-2 rounded-full">
+            <BsTelegram />
+          </Link>
+        )
+      }
+      {
+        contact?.facebook && (
+          <Link href={contact.facebook} target="_blank" className="text-black hover:text-black/50 hover:bg-(--card) transition-colors bg-white px-2 py-2 rounded-full">
+            <BsFacebook />
+          </Link>
+        )
+      }
+      {
+        contact?.youtube && (
+          <Link href={contact.youtube} target="_blank" className="text-black hover:text-black/50 hover:bg-(--card) transition-colors bg-white px-2 py-2 rounded-full">
+            <BsYoutube />
+          </Link>
+        )
+      }
     </div>
   );
 }

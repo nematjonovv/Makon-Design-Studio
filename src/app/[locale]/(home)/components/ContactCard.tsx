@@ -2,52 +2,82 @@
 
 import Adress from "@/components/Adress";
 import { contactCard } from "@/shared/data/contact.data";
-import { ILocaleAddress } from "@/shared/types/contact.type";
-import { useLocale } from "next-intl";
-import Link from "next/link";
-import { useMemo } from "react";
 import Socials from "./Socials";
+import { useEffect, useState } from "react";
+import { ContactData, getContactInfo } from "@/api/get.api";
 
 function ContactCard() {
+  const [contact, setContact] = useState<ContactData | null>(null)
+  useEffect(() => {
+    getContactInfo().then((response) => {
+      setContact(response.data);
+    }).catch((error) => {
+      console.error("Failed to fetch contact info:", error);
+    });
+  }, [])
   return (
-    <div
-      className="
-      flex flex-col justify-between
-      p-6 sm:p-8 lg:p-12
-      bg-(--surface) rounded-4xl
-      border border-(--card-border)
-      space-y-6
-      w-full
-      
-    "
-    >
-      <div className="space-y-4">
-        <a
-          href={`tel:${contactCard.phone.replace(/\s/g, "")}`}
-          className="
-          block
-          text-lg sm:text-xl lg:text-2xl
-          text-(--text) font-clash font-medium
-          hover:text-(--secondarytext)
-        "
-        >
-          {contactCard.phone}
-        </a>
-        <Socials />
-        <Adress />
-      </div>
+    <div className="flex flex-col justify-between p-6 sm:p-8 lg:p-10 bg-(--surface) rounded-4xl border border-(--card-border) space-y-6 w-full">
 
+      {/* Contact Info */}
+      <div className="space-y-5">
+
+        {/* Phones */}
+        <div className="space-y-1">
+          <p className="text-xs text-(--card) uppercase tracking-widest font-medium">
+            Telefon
+          </p>
+
+          <a href={`tel:${contact?.phone.replace(/\s/g, "")}`}
+            className="block text-lg sm:text-xl lg:text-2xl text-(--text) font-clash font-medium hover:text-(--secondarytext) transition-colors"
+          >
+            +{contact?.phone}
+          </a>
+
+          <a href={`tel:${contact?.phone2.replace(/\s/g, "")}`}
+            className="block text-lg sm:text-xl lg:text-2xl text-(--text) font-clash font-medium hover:text-(--secondarytext) transition-colors"
+          >
+            +{contact?.phone2}
+          </a>
+        </div>
+
+        <div className="border-t border-white/8" />
+
+        {/* Email */}
+        <div className="space-y-1">
+          <p className="text-xs text-(--card) uppercase tracking-widest font-medium">
+            Email
+          </p>
+
+          <a href={`mailto:${contact?.email}`}
+            className="block text-base sm:text-lg text-(--text) font-clash font-medium hover:text-(--secondarytext) transition-colors"
+          >
+            {contact?.email}
+          </a>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-white/8" />
+
+        {/* Socials + Address */}
+        <div className="flex items-center justify-between">
+          <Socials contact={contact} />
+          <Adress contact={contact} />
+        </div>
+
+      </div >
+
+      {/* Map */}
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23977.01089891371!2d69.24495563125001!3d41.30611459416383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b7844bc66a5%3A0xe72517b72d55eb6c!2sBEST%20GUESTHOUSE!5e0!3m2!1sru!2s!4v1769496959503!5m2!1sru!2s"
+        src="https://www.google.com/maps/embed?..."
         loading="lazy"
-        className="
-        w-full
-        rounded-[30px]
-        border-0
-        h-[240px] sm:h-[280px] lg:h-[320px]
-      "
+        className="w-full rounded-2xl border-0 h-[220px] sm:h-[260px] lg:h-[300px]"
+        style={{ border: 0 }
+        }
+        allowFullScreen
+        referrerPolicy="no-referrer-when-downgrade"
       />
-    </div>
+
+    </div >
   );
 }
 

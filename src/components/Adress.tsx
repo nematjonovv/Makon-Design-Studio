@@ -1,15 +1,12 @@
-import { contactCard } from "@/shared/data/contact.data";
+import { ContactData } from "@/api/get.api";
 import { useLocale } from "next-intl";
 
-function Adress() {
+function Adress({ contact }: { contact: ContactData | null }) {
   const locale = useLocale() as "uz" | "ru";
-  const data = contactCard.address.localeData[locale];
 
   return (
     <div className="flex text-(--text) text-xs sm:text-sm gap-2 flex-wrap">
-      <p>{data.city}</p>
-      <p>{data.street}</p>
-      <p>{data.full}</p>
+      <p>{locale === "ru" ? contact?.addressRu : contact?.addressUz}</p>
     </div>
   );
 }
