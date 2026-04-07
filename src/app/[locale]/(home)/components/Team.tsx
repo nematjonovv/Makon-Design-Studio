@@ -29,7 +29,7 @@ async function Team() {
         {/* group */}
         <div className="flex w-auto justify-center  items-center scrollanimation gap-5 pr-5">
           {/* card */}
-          {team.map((e, i) => {
+          {team?.map((e, i) => {
             return (
               <div
                 key={i}
@@ -52,7 +52,7 @@ async function Team() {
         {/* group */}
         <div className="flex w-auto justify-center items-center scrollanimation gap-5 pr-5">
           {/* card */}
-          {team.map((e, i) => {
+          {team?.map((e, i) => {
             return (
               <div
                 key={i}

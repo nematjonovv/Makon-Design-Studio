@@ -11,7 +11,7 @@ import AnimatedSection from "@/components/AnimationSection";
 async function Projects() {
   const t = await getTranslations("Projects");
   const res = await getProjects();
-  const projects: IProject[] = await res?.data;
+  const projects: IProject[] = res?.data ?? [];
   const locale = await getLocale() as "ru" | "uz";
   return (
     <section className="container">

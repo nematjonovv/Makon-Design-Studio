@@ -90,7 +90,7 @@ async function AboutProject({ params }: Props) {
             { label: "Byudjet", value: `$${project.facts.budget.toLocaleString()}` },
             { label: "Uslub", value: project.design.style[0] ?? "—" },
             { label: "Yil", value: project.facts.year },
-          ].map((stat) => (
+          ]?.map((stat) => (
             <div
               key={stat.label}
               className="flex flex-col gap-1 px-6 py-5"

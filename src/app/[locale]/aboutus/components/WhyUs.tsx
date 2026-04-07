@@ -21,7 +21,7 @@ function WhyUs() {
       </div>
       <div className='grid grid-cols-2 gap-3 mt-12 container'>
         {
-          items.map((item, index) => (
+          items?.map((item, index) => (
             <AnimatedSection animation="fade-up" key={index} delay={index * 200}>
               <div className="bg-(--surface) border border-[--border-muted] rounded-2xl p-[30px_28px] flex gap-4.5 items-start transition-[border-color,background] duration-250 hover:border-[rgba(42,97,111,0.7)] hover:bg-[rgba(42,97,111,0.12)]" key={index}>
                 <div className="text-[11px] text-(--secondarytext) opacity-55 min-w-6 pt-0.75 font-medium">{item.number}</div>
