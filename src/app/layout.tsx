@@ -26,6 +26,7 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
         />
+        <meta name="google-site-verification" content="JaR7S9wpgeel0t9M6grGAYjLer6YuWq2gZC2NMPo6H4" />
       </head>
       <body className="relative">
         {/* Global background */}
