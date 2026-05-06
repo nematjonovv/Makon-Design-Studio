@@ -1,21 +1,37 @@
+"use client"
 import { getProjectBySlug } from "@/api/get.api";
-import { get } from "http";
-import { getLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import ProjectCover from "../../(home)/components/ProjectCover";
+import { use, useEffect, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { IProject } from "@/shared/types/project.type";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
-async function AboutProject({ params }: Props) {
-  const { slug } = await params;
-  const res = await getProjectBySlug(slug);
-  const project = res?.data;
+function AboutProject({ params }: Props) {
+  const { slug } = use(params);
+  const locale = useLocale() as "ru" | "uz";
+  const t = useTranslations("ProjectDetails");
+  const [project, setProject] = useState<IProject | null>(null);
+  const [viewImage, setViewImage] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    getProjectBySlug(slug).then((res) => {
+      setProject(res?.data ?? null);
+      setLoading(false);
+    });
+  }, [slug]);
+
+  useEffect(() => {
+  document.body.classList.toggle("overflow-hidden", !!viewImage);
+}, [viewImage]);
+
+  if (loading) return null;
   if (!project) return notFound();
-  const locale = await getLocale() as "ru" | "uz";
+
   const content = project?.localizedContent[locale];
-  const t = await getTranslations("ProjectDetails");
   return (
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
 
@@ -141,18 +157,7 @@ async function AboutProject({ params }: Props) {
           <div className="col-span-12 md:col-span-5 flex flex-col gap-6">
             {/* Gallery masonry-ish */}
             <div className="grid grid-cols-2 gap-3">
-              {/* Featured — full width */}
-              {project.gallery[0] && (
-                <div className="col-span-2 rounded-2xl overflow-hidden aspect-video">
-                  <img
-                    src={project.gallery[0].image}
-                    alt={project.gallery[0].image_alt[locale]}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              )}
-              {/* Remaining 2 col */}
-              {project.gallery.slice(1).map((img: any) => (
+              {project.gallery?.map((img: any) => (
                 <div
                   key={img.id}
                   className="rounded-2xl overflow-hidden aspect-square"
@@ -160,10 +165,24 @@ async function AboutProject({ params }: Props) {
                   <img
                     src={img.image}
                     alt={img.image_alt[locale]}
+                    onClick={() => setViewImage(img.image)}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               ))}
+            </div>
+            <div
+              className={`${viewImage ? "flex" : "hidden"} fixed w-full h-full inset-0 bg-black/90 z-50 justify-center items-center`}
+              onClick={() => setViewImage(null)}
+            >
+              {viewImage && (
+                <div
+                  className="fixed w-full h-full inset-0 bg-black/50 z-999 overflow-hidden flex justify-center items-center"
+                  onClick={() => setViewImage(null)}
+                >
+                  <img src={viewImage} className="w-full h-full object-contain" alt="" />
+                </div>
+              )}
             </div>
           </div>
         </div>
