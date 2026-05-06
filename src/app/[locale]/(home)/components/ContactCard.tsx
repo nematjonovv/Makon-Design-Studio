@@ -68,7 +68,7 @@ function ContactCard() {
 
       {/* Map */}
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d5995.963008686148!2d69.256467!3d41.287507!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDE3JzE1LjAiTiA2OcKwMTUnMjMuMyJF!5e0!3m2!1sru!2s!4v1778069211287!5m2!1sru!2s"
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d801.7039354804044!2d69.2565408627552!3d41.28776648947625!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b15a42dab59%3A0x512d216b1ca5814!2sAmalgama!5e1!3m2!1sru!2s!4v1778069637347!5m2!1sru!2s"
         loading="lazy"
         className="w-full rounded-2xl border-0 h-55 sm:h-65 lg:h-75"
         style={{ border: 0 }
