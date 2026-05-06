@@ -68,9 +68,9 @@ function ContactCard() {
 
       {/* Map */}
       <iframe
-        src="https://www.google.com/maps/embed?..."
+        src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d5995.963008686148!2d69.256467!3d41.287507!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDE3JzE1LjAiTiA2OcKwMTUnMjMuMyJF!5e0!3m2!1sru!2s!4v1778069211287!5m2!1sru!2s"
         loading="lazy"
-        className="w-full rounded-2xl border-0 h-[220px] sm:h-[260px] lg:h-[300px]"
+        className="w-full rounded-2xl border-0 h-55 sm:h-65 lg:h-75"
         style={{ border: 0 }
         }
         allowFullScreen
