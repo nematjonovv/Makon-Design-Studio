@@ -20,7 +20,7 @@ async function AboutProject({ params }: Props) {
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
 
       <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/7" }}>
-        <ProjectCover priority={true} className="w-full h-full object-cover" coverImage={project.coverImage} alt={project.coverImage.image_alt[locale]} />
+        <ProjectCover priority={true} className="w-full aspect-video object-cover object-[center_65%]" coverImage={project.coverImage} alt={project.coverImage.image_alt[locale]} />
         {/* gradient overlay */}
         <div className="absolute inset-0 bg-linear-to-t from-(--bg) via-(--bg)/40 to-transparent" />
         <div className="absolute inset-0 bg-linear-to-r from-(--bg)/60 via-transparent to-transparent" />

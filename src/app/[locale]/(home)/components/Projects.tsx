@@ -13,12 +13,14 @@ async function Projects() {
   const res = await getProjects();
   const projects: IProject[] = res?.data ?? [];
   const locale = await getLocale() as "ru" | "uz";
+
+
   return (
     <section className="container">
       <Badge title={t("badge")} />
       <H2 title={t("title")} />
       {/* Projects Card */}
-      <div className="flex justify-between flex-wrap gap-20 mt-23 text-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12.5 mt-23 text-center">
         {projects?.map((p, i) => {
           return (
             <AnimatedSection
@@ -26,16 +28,16 @@ async function Projects() {
               delay={i % 2 === 0 ? "delay-150" : "delay-0"}
               index={i}
               key={p.id}
-              className="relative w-full md lg:flex-1 lg:min-w-[calc(50%-80px)]  h-110 rounded-[30px] border border-(--card-border) overflow-hidden"
+              className="relative w-full h-155 rounded-[30px] border border-(--card-border) overflow-hidden group"
             >
               <ProjectCover
                 priority={i < 4}
-                key={i}
                 coverImage={p.coverImage}
-                className="text-white w-full h-full rounded-[30px]"
+                className="text-white w-full h-full group-hover:scale-105 transition duration-450 rounded-[30px] object-cover"
                 alt={p.coverImage.image_alt[locale]}
               />
-              <div className="inset-0 absolute w-full h-full bg-black/15 backdrop-blur-[3px] rounded-[30px] flex flex-col justify-center items-center">
+
+              <div className="absolute inset-0 bg-black/15 backdrop-blur-[3px] rounded-[30px] flex flex-col justify-center items-center">
                 <p className="font-semibold text-center font-clashGrotesk mb-10 text-3xl text-(--text)">
                   {p.title}
                 </p>
@@ -46,6 +48,8 @@ async function Projects() {
           );
         })}
       </div>
+
+
       <div className="flex justify-center items-center w-full mt-15">
         <CtaButton fontSize={14} padding={[13, 30]} round={16} />
       </div>
