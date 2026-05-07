@@ -24,7 +24,8 @@ interface ILocation {
 interface IFacts {
   year: number;
   areaM2: number;
-  budget: number;
+  budgetDesign: number;
+  budgetBuild: number;
   location: ILocation;
 }
 

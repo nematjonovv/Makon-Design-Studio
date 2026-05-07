@@ -25,8 +25,8 @@ function AboutProject({ params }: Props) {
   }, [slug]);
 
   useEffect(() => {
-  document.body.classList.toggle("overflow-hidden", !!viewImage);
-}, [viewImage]);
+    document.body.classList.toggle("overflow-hidden", !!viewImage);
+  }, [viewImage]);
 
   if (loading) return null;
   if (!project) return notFound();
@@ -98,12 +98,13 @@ function AboutProject({ params }: Props) {
       <div className="container py-16">
         {/* Stats row */}
         <div
-          className="grid grid-cols-2 md:grid-cols-4 gap-px mb-16 rounded-2xl overflow-hidden border"
+          className="grid grid-cols-5 md:grid-cols-5 gap-px mb-16 rounded-2xl overflow-hidden border"
           style={{ borderColor: "var(--border-muted)" }}
         >
           {[
             { label: "Maydon", value: `${project.facts.areaM2} m²` },
-            { label: "Byudjet", value: `$${project.facts.budget.toLocaleString()}` },
+            { label: "Dizayn xarajati", value: `$${project.facts.budgetDesign}` },
+            { label: "Qurilish xarajati", value: `$${project.facts.budgetBuild}` },
             { label: "Uslub", value: project.design.style[0] ?? "—" },
             { label: "Yil", value: project.facts.year },
           ]?.map((stat) => (
@@ -191,7 +192,6 @@ function AboutProject({ params }: Props) {
   );
 }
 
-/* ── Section component  */
 function Section({
   num,
   title,
