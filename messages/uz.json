@@ -34,11 +34,26 @@
     "features": "Xizmat ichiga nimalar kiradi?",
     "process": "Ish jarayoni qanday ko‘rinishda bo‘ladi?",
     "day": "kun",
-    "duration": "Davomiyligi"
+    "duration": "Davomiyligi",
+    "steps": "Bosqichlar",
+    "empty": "Hozircha xizmatlar qo‘shilmagan.",
+    "more": "Batafsil"
   },
   "Projects": {
     "badge": "Loyihalar",
-    "title": "Biz yaratgan makonlar"
+    "title": "Biz yaratgan makonlar",
+    "moreProjects": "+{count} ta loyiha",
+    "viewAll": "Barcha loyihalarni ko‘rish"
+  },
+  "ProjectsPage": {
+    "title": "Biz ishlab chiqqan interyer dizaynlar",
+    "totalProjects": "Jami loyihalar",
+    "totalArea": "Umumiy maydon",
+    "year": "Yil",
+    "area": "Maydon",
+    "city": "Shahar",
+    "viewFull": "To‘liq ko‘rish",
+    "empty": "Hozircha loyihalar mavjud emas."
   },
   "Team": {
     "badge": "Bizning jamoa",
@@ -117,19 +132,15 @@
       "pending": "Kutilmoqda"
     }
   },
-  "Mission": {
-    "badge": "Missiya & Vizyon",
-    "title": "Maqsadimiz aniq",
-    "missiya": {
-      "subtitle": "Missiyamiz",
-      "title": "Nima uchun biz?",
-      "description": "Har bir mijozga o'ziga xos, funksional va estetik jihatdan mukammal makon yaratish. Biz faqat dizayn qilmaymiz — biz sizning hayot tarzingizni makonlarga ko'chiramiz."
-    },
-    "vizyonimiz": {
-      "subtitle": "Vizyonimiz",
-      "title": "Kelajakka nazar",
-      "description": "O'zbekistonda interior dizayn sohasida eng ishonchli va taniqli studiya bo'lish — bu bizning asosiy maqsadimiz."
-    }
+  "Studio": {
+    "title": "Toshkentdagi interyer dizayn studiyasi",
+    "history": "Makon — Toshkentda joylashgan interyer dizayn studiyasi. Biz xonadonlar, ofislar va tijorat makonlari uchun g‘oya va konsepsiyadan tortib tayyor interyergacha bo‘lgan to‘liq loyihalarni ishlab chiqamiz.",
+    "approach": "Har bir loyihani mijozning kundalik hayot tarzini o‘rganishdan boshlaymiz: makon qanday ishlatilishini tushunib, funksionallik, yorug‘lik va materiallarni bir butun qilib loyihalaymiz.",
+    "viewPhotos": "Rasmlarni ko‘rish",
+    "galleryLabel": "Studiya galereyasi",
+    "close": "Yopish",
+    "prev": "Oldingi rasm",
+    "next": "Keyingi rasm"
   },
   "WhyUs": {
     "badge": "Nega biz?",
@@ -167,9 +178,16 @@
       }
     ]
   },
+  "Footer": {
+    "description": "Toshkentdagi interyer dizayn studiyasi. Uylar, ofislar va tijorat makonlari.",
+    "pages": "Sahifalar",
+    "contact": "Aloqa"
+  },
   "CtaComponent": {
     "title": "Yangi loyiha boshlashga tayyormisiz?",
-    "description": "Biz siz bilan muloqot qilishga doim tayyormiz."
+    "description": "Biz siz bilan muloqot qilishga doim tayyormiz.",
+    "close": "Yopish",
+    "modalLabel": "Ariza qoldirish"
   },
   "filter": {
     "all": "Barchasi"
@@ -178,5 +196,27 @@
     "ctaTitle": "",
     "ctaTitle2": "bir qadam",
     "ctaTitleAccent": "makonga"
+  },
+  "Metadata": {
+    "home": {
+      "title": "Makon Design — Toshkentda interyer dizayn studiyasi",
+      "description": "Uy, ofis, kafe va tijorat binolari uchun interyer dizayn, 3D vizualizatsiya va kalit topshiriladigan ta'mirlash. Loyihangizni Makon Design bilan boshlang."
+    },
+    "aboutus": {
+      "title": "Biz haqimizda",
+      "description": "Makon Design jamoasi, studiyamiz tarixi va ish yondashuvimiz bilan tanishing. Nega mijozlar aynan bizni tanlashini bilib oling."
+    },
+    "services": {
+      "title": "Xizmatlar — interyer dizayn va ta'mirlash",
+      "description": "Rejalashtirish, interyer dizayn, 3D vizualizatsiya, qurilish va kalit topshiriladigan ta'mirlash. Ish bosqichlari va muddatlar bilan tanishing."
+    },
+    "projects": {
+      "title": "Loyihalar — interyer dizayn portfoliosi",
+      "description": "Makon Design tomonidan amalga oshirilgan turar-joy va tijorat interyer loyihalari: fotosuratlar, maydon, uslub va natijalar."
+    },
+    "contact": {
+      "title": "Bog'lanish",
+      "description": "Makon Design bilan bog'laning: telefon, manzil va ijtimoiy tarmoqlar. Ariza qoldiring — tez orada siz bilan bog'lanamiz."
+    }
   }
 }

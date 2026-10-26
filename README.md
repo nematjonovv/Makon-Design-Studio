@@ -7,12 +7,12 @@ Includes a dynamic admin panel for full content management.
 https://makon-design-studio.vercel.app/
 
 ## Tech Stack
-Next.js · Node.js · Express · PostgreSQL · Prisma · TypeScript · Tailwind CSS · Cloudinary · JWT
+Next.js · Node.js · Express · PostgreSQL · Prisma · TypeScript · Tailwind CSS · Sharp · JWT
 
 ## Features
 - Admin panel with full CRUD for all content sections
 - Multilingual support (i18n)
 - Dark / Light mode
-- Video & image upload via Cloudinary
+- Video & image upload to local storage (images converted to WebP via sharp)
 - Secure auth with JWT refresh/access token rotation
 - Client request form

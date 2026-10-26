@@ -1,7 +1,7 @@
 import AnimatedSection from '@/components/AnimationSection';
-import Badge from '@/components/Badge';
-import H2 from '@/components/H2';
 import { useTranslations } from 'next-intl';
+
+const delays = ["delay-0", "delay-150", "delay-300"] as const;
 
 function WhyUs() {
   const t = useTranslations("WhyUs");
@@ -12,54 +12,40 @@ function WhyUs() {
     description: string;
   }>;
 
-
   return (
-    <div>
-      <div className="text-center mb-10">
-        <Badge title={t("badge")} />
-        <H2 title={t("title")} />
+    <section className="container mt-35">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
+        {/* Chap: sarlavha — desktopda scroll paytida yopishib turadi */}
+        <AnimatedSection animation="fade-up" className="md:col-span-4">
+          <div className="md:sticky md:top-32">
+            <h2 className="font-clash font-semibold text-(--text) text-3xl md:text-[44px] leading-[1.1] tracking-tight max-w-xs">
+              {t("title")}
+            </h2>
+          </div>
+        </AnimatedSection>
+
+        {/* O'ng: afzalliklar ro'yxati */}
+        <ul className="md:col-span-8 border-t border-(--border-muted)">
+          {items?.map((item, index) => (
+            <li key={item.number} className="border-b border-(--border-muted)">
+              <AnimatedSection
+                animation="fade-up"
+                delay={delays[index % delays.length]}
+                className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] gap-x-8 gap-y-2 py-6 md:py-8"
+              >
+                <h3 className="font-clash font-semibold text-(--text) text-lg md:text-xl leading-snug">
+                  {item.title}
+                </h3>
+                <p className="font-clashGrotesk text-sm md:text-[15px] leading-relaxed text-(--secondarytext)">
+                  {item.description}
+                </p>
+              </AnimatedSection>
+            </li>
+          ))}
+        </ul>
       </div>
-      <div className='grid grid-cols-2 gap-3 mt-12 container'>
-        {
-          items?.map((item, index) => (
-            <AnimatedSection animation="fade-up" key={index} delay={index * 200}>
-              <div className="bg-(--surface) border border-[--border-muted] rounded-2xl p-[30px_28px] flex gap-4.5 items-start transition-[border-color,background] duration-250 hover:border-[rgba(42,97,111,0.7)] hover:bg-[rgba(42,97,111,0.12)]" key={index}>
-                <div className="text-[11px] text-(--secondarytext) opacity-55 min-w-6 pt-0.75 font-medium">{item.number}</div>
-                <div>
-                  <h4 className='text-[15px] font-semibold mb-1.75 text-(--text)'>{item.title}</h4>
-                  <p className='text-[13px] text-(--secondarytext) leading-[1.65] h-10'>{item.description}</p>
-                </div>
-              </div>
-            </AnimatedSection>
-          ))
-        }
-      </div>
-    </div>
+    </section>
   );
 }
-
-//  .whyus-grid {
-//       display: grid; grid-template-columns: 1fr 1fr;
-//       gap: 12px; margin-top: 48px;
-//     }
-
-
-//  .whyus-card {
-//       background: var(--surface);
-//       border: 1px solid var(--border-muted);
-//       border-radius: 16px; padding: 30px 28px;
-//       display: flex; gap: 18px; align-items: flex-start;
-//       transition: border-color 0.25s, background 0.25s;
-//     }
-//     .whyus-card:hover {
-//       border-color: rgba(42,97,111,0.7);
-//       background: rgba(42,97,111,0.12);
-//     }
-//     .whyus-num {
-//       font-size: 11px; color: var(--secondarytext);
-//       opacity: 0.55; min-width: 24px; padding-top: 3px; font-weight: 500;
-//     }
-//     .whyus-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 7px; }
-//     .whyus-card p { font-size: 13px; color: var(--secondarytext); line-height: 1.65; }
 
 export default WhyUs;

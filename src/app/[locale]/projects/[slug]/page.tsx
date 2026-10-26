@@ -1,37 +1,58 @@
-"use client"
+import type { Metadata } from "next";
+import { mediaUrl } from "@/shared/utils/mediaUrl";
 import { getProjectBySlug } from "@/api/get.api";
 import { notFound } from "next/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import ProjectCover from "../../(home)/components/ProjectCover";
-import { use, useEffect, useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
-import { IProject } from "@/shared/types/project.type";
+import ProjectGallery from "./ProjectGallery";
+import { SITE_NAME, baseOpenGraph, buildAlternates } from "@/lib/seo";
 
 type Props = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 };
 
-function AboutProject({ params }: Props) {
-  const { slug } = use(params);
-  const locale = useLocale() as "ru" | "uz";
-  const t = useTranslations("ProjectDetails");
-  const [project, setProject] = useState<IProject | null>(null);
-  const [viewImage, setViewImage] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    getProjectBySlug(slug).then((res) => {
-      setProject(res?.data ?? null);
-      setLoading(false);
-    });
-  }, [slug]);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const project = (await getProjectBySlug(slug))?.data;
+  if (!project) return {};
 
-  useEffect(() => {
-    document.body.classList.toggle("overflow-hidden", !!viewImage);
-  }, [viewImage]);
+  const lang = locale as "ru" | "uz";
+  const content = project.localizedContent?.[lang];
+  // metaTitle admin paneldan keladi, o'zida to'liq sarlavha — shablon qo'shilmaydi
+  const title = content?.seo?.metaTitle || `${project.title} | ${SITE_NAME}`;
+  const description = content?.seo?.metaDescription || content?.excerpt;
+  const cover = project.coverImage?.image_light;
 
-  if (loading) return null;
-  if (!project) return notFound();
+  return {
+    title: { absolute: title },
+    description,
+    alternates: buildAlternates(locale, `/projects/${project.slug}`),
+    openGraph: {
+      ...baseOpenGraph(locale),
+      type: "article",
+      title,
+      description,
+      url: `/${locale}/projects/${project.slug}`,
+      ...(cover && {
+        images: [{ url: mediaUrl(cover), alt: project.coverImage.image_alt?.[lang] || project.title }],
+      }),
+    },
+  };
+}
 
-  const content = project?.localizedContent[locale];
+async function AboutProject({ params }: Props) {
+  const { locale: rawLocale, slug } = await params;
+  setRequestLocale(rawLocale);
+  const locale = rawLocale as "ru" | "uz";
+  const [res, t] = await Promise.all([
+    getProjectBySlug(slug),
+    getTranslations("ProjectDetails"),
+  ]);
+  const project = res?.data;
+
+  if (!project) notFound();
+
+  const content = project.localizedContent[locale];
   return (
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
 
@@ -156,35 +177,7 @@ function AboutProject({ params }: Props) {
 
           {/* ── RIGHT col ── */}
           <div className="col-span-12 md:col-span-5 flex flex-col gap-6">
-            {/* Gallery masonry-ish */}
-            <div className="grid grid-cols-2 gap-3">
-              {project.gallery?.map((img: any) => (
-                <div
-                  key={img.id}
-                  className="rounded-2xl overflow-hidden aspect-square"
-                >
-                  <img
-                    src={img.image}
-                    alt={img.image_alt[locale]}
-                    onClick={() => setViewImage(img.image)}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              ))}
-            </div>
-            <div
-              className={`${viewImage ? "flex" : "hidden"} fixed w-full h-full inset-0 bg-black/90 z-50 justify-center items-center`}
-              onClick={() => setViewImage(null)}
-            >
-              {viewImage && (
-                <div
-                  className="fixed w-full h-full inset-0 bg-black/50 z-999 overflow-hidden flex justify-center items-center"
-                  onClick={() => setViewImage(null)}
-                >
-                  <img src={viewImage} className="w-full h-full object-contain" alt="" />
-                </div>
-              )}
-            </div>
+            <ProjectGallery gallery={project.gallery} locale={locale} />
           </div>
         </div>
       </div>

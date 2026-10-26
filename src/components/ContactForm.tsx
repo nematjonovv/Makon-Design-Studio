@@ -4,7 +4,7 @@ import { sendRequest } from "@/api/get.api";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-export default function ContactForm() {
+export default function ContactForm({ className = "h-[80%]" }: { className?: string }) {
   const t = useTranslations("Contact");
   const [form, setForm] = useState({
     name: "",
@@ -38,7 +38,7 @@ export default function ContactForm() {
     }
   };
   return (
-    <div className="bg-(--surface) w-full rounded-2xl h-[80%] p-6 sm:p-8 border border-(--border-muted)">
+    <div className={`bg-(--surface) w-full rounded-2xl p-6 sm:p-8 border border-(--border-muted) ${className}`}>
       {isSuccess ? (
         /* Success state */
         <div className="flex flex-col items-center h-full  justify-center gap-3 py-12 animate-fade-in">

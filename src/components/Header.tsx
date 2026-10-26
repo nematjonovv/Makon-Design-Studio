@@ -52,7 +52,7 @@ function Header() {
             <DropDownLang />
             <ThemeButton />
           </div>
-          <CtaButton padding={[8.5, 16.5]} fontSize={14} round={12} />
+          <CtaButton padding={[8.5, 16.5]} fontSize={14} round={12} onClick={() => setIsOpen(false)} />
         </div>
       </div>
     </header>

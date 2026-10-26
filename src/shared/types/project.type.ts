@@ -63,10 +63,14 @@ export interface IProject {
   categoryId: number;
   slug: string;
   status: "completed" | "in_progress" | "pending";
+  /** Bosh sahifadagi o'rni (1 — katta, 2 — o'rta, 3 — kichik), null — ko'rsatilmaydi */
+  featuredOrder: number | null;
   localizedContent: ILocalizedContent;
   facts: IFacts;
   design: IDesign;
   coverImage: ICoverImage;
   category: ICategory;
   gallery: GalleryImage[];
+  createdAt: string;
+  updatedAt: string;
 }

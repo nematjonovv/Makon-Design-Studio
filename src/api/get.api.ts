@@ -1,8 +1,10 @@
+import { cache } from "react";
 import { IServices } from "@/shared/types/service.type";
 import { apiFetch } from "./ApiFetch";
 import { ITeamMember } from "@/shared/types/team.type";
 import { IProject } from "@/shared/types/project.type";
 import { ITestimonial } from "@/shared/types/testimonial.type";
+import { IGalleryImage } from "@/shared/types/gallery.type";
 
 interface ServiceResponse {
   success: boolean;
@@ -47,15 +49,22 @@ export async function getTeam(): Promise<TeamResponse> {
   return res.json()
 }
 
+export async function getGallery(): Promise<{ success: boolean; data: IGalleryImage[] }> {
+  const res = await apiFetch("/api/gallery", { next: { revalidate: 60 } })
+  return res.json()
+}
+
 export async function getProjects(): Promise<ProjectResponse> {
   const res = await apiFetch("/api/projects", { next: { revalidate: 60 } })
   return res.json()
 }
 
-export async function getProjectBySlug(slug: string): Promise<{ success: boolean; data: IProject | null; }> {
-  const res = await apiFetch(`/api/projects/${slug}`, { next: { revalidate: 60 } })
+// cache: generateMetadata va sahifa bitta so'rovda bir xil natijani ishlatadi
+export const getProjectBySlug = cache(async (slug: string): Promise<{ success: boolean; data: IProject | null; }> => {
+  const res = await apiFetch(`/api/projects/${encodeURIComponent(slug)}`, { next: { revalidate: 60 } })
+  if (!res.ok) return { success: false, data: null }
   return res.json()
-}
+})
 
 export async function getTestimonials(): Promise<{ success: boolean; data: ITestimonial[]; }> {
   const res = await apiFetch("/api/testimonials", { next: { revalidate: 60 } })

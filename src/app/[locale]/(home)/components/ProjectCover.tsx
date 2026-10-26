@@ -1,4 +1,5 @@
 "use client";
+import { mediaUrl } from "@/shared/utils/mediaUrl";
 import { useTheme } from "@/Providers/ThemeProvider";
 import Image from "next/image";
 
@@ -26,7 +27,7 @@ function ProjectCover({
 
   const cover = isDark ? coverImage.image_dark : coverImage.image_light;
 
-  return <Image draggable={false} src={cover} alt={alt} className={className} fill priority={priority} />;
+  return <Image draggable={false} src={mediaUrl(cover)} alt={alt} className={className} fill priority={priority} />;
 }
 
 export default ProjectCover;

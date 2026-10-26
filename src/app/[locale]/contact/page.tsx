@@ -1,8 +1,20 @@
 import ContactForm from "@/components/ContactForm";
 import ContactCard from "../(home)/components/ContactCard";
 import { useLocale, useTranslations } from "next-intl";
+import { use } from "react";
+import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
+import { staticPageMetadata } from "@/lib/seo";
 
-function ContactPage() {
+type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  return staticPageMetadata(locale, "contact", "/contact");
+}
+
+function ContactPage({ params }: Props) {
+  setRequestLocale(use(params).locale);
   const t2 = useTranslations("contactDecor");
   const locale = useLocale() as "uz" | "ru"
   return (

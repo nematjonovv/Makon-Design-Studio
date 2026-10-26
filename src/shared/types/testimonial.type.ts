@@ -16,11 +16,9 @@ export interface ITestimonial {
     uz: TestimonialLocalizedContent;
   };
   photoUrl: string;
-  videoUrl: string;
+  videoUrl: string | null;
   altImage: {
     image: LocalizedString;
     video: LocalizedString;
   };
-  photoPublicId: string;
-  videoPublicId: string;
 }

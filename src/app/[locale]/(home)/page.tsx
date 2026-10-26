@@ -8,8 +8,21 @@ import Process from "./components/Process";
 import Testimonial from "./components/Testimonial";
 import Contact from "./components/Contact";
 import AnimatedSection from "@/components/AnimationSection";
+import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
+import { staticPageMetadata } from "@/lib/seo";
 
-function Home() {
+type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  return staticPageMetadata(locale, "home", "");
+}
+
+async function Home({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <main className="w-screen overflow-x-hidden">
       <Hero />

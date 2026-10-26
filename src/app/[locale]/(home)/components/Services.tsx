@@ -1,18 +1,30 @@
+import { mediaUrl } from "@/shared/utils/mediaUrl";
 import { getServices } from "@/api/get.api";
 import AnimatedSection from "@/components/AnimationSection";
 import Badge from "@/components/Badge";
-import CtaButton from "@/components/CtaButton";
 import H2 from "@/components/H2";
-import ReadMoreBtn from "@/components/ReadMoreBtn";
+import { Link } from "@/i18n/navigation";
 import { IServices } from "@/shared/types/service.type";
+import { ArrowUpRight, Clock, Layers } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
+
+const delays = ["delay-0", "delay-150", "delay-300"] as const;
+
+/** 3 ustunli grid: oxirgi qatorda 2 ta qolsa — yarimdan, 1 ta qolsa — to'liq kenglik */
+function spanClass(index: number, total: number) {
+  const rest = total % 3;
+  if (rest === 2 && index >= total - 2) return "lg:col-span-3";
+  if (rest === 1 && index === total - 1) return "lg:col-span-6";
+  return "lg:col-span-2";
+}
 
 async function Services() {
   const t = await getTranslations("Services");
   const locale = (await getLocale()) as "ru" | "uz";
   const res = await getServices();
-  const services: IServices[] = await res?.data;
+  const services: IServices[] = res?.data ?? [];
+
   return (
     <section className="container mt-12">
       <Badge title={t("badge")} />
@@ -20,46 +32,58 @@ async function Services() {
         <H2 title={t("title")} />
       </AnimatedSection>
 
-      <div className="relative overflow-hidden rounded-4xl flex w-full justify-between gap-5 flex-wrap mt-15">
-        {services?.map((service, index) => {
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 mt-15">
+        {services.map((service, index) => {
+          const item = service.localeData[locale];
           return (
             <AnimatedSection
-              animation={"fade-up"}
-              delay={index % 2 === 0 ? "delay-300" : "delay-0"}
-              index={index}
               key={service.id}
-              className={`${index === 2 ? "w-full" : "w-full lg:flex-1 lg:min-w-[calc(50%-10px)]"}`}
+              animation="fade-up"
+              delay={delays[index % delays.length]}
+              className={`${spanClass(index, services.length)} ${services.length % 2 === 1 && index === services.length - 1 ? "sm:col-span-2" : ""}`}
             >
-              <div
-                key={service.id}
-                className={`relative border border-(--card-border) backdrop-blur-md bg-(--surface) rounded-4xl pt-6.5 px-9 pb-10 flex items-center overflow-hidden ${index === 2 ? "w-full" : "w-full lg:flex-1 lg:min-w-[calc(50%-10px)]"}`}
+              <Link
+                href={`/services#service-${service.id}`}
+                className="group flex h-full flex-col gap-6 rounded-[30px] border border-(--card-border) bg-(--surface) p-6 md:p-7 transition-colors hover:border-(--border-strong)"
               >
-                {" "}
-                <div className="h-full w-auto flex flex-col justify-between z-10">
-                  <div className="">
-                    <h4 className="text-4xl text-(--text) font-clashGrotesk font-medium whitespace-nowrap">
-                      {service.localeData[locale].title}
-                    </h4>
-                    <p className="text-sm md:max-w-1/2 min-h-20 text-(--secondarytext) mt-2 mb-15">
-                      {service.localeData[locale].desc}
-                    </p>
-                  </div>
-
-                  <div className="space-x-5">
-                    <CtaButton fontSize={14} round={12} padding={[8, 16.5]} />
-                    <ReadMoreBtn href="/services" which="ghost" />
-                  </div>
+                <div className="relative grid size-16 place-items-center overflow-hidden rounded-2xl border border-(--badge-border) bg-(--badge-bg)">
+                  {service.icon ? (
+                    <Image
+                      src={mediaUrl(service.icon)}
+                      alt=""
+                      fill
+                      sizes="64px"
+                      className="object-contain p-2.5"
+                    />
+                  ) : (
+                    <Layers className="size-7 text-(--secondarytext)" />
+                  )}
                 </div>
-                <Image
-                  draggable="false"
-                  src={service.icon}
-                  alt="service image"
-                  height={400}
-                  width={400}
-                  priority
-                  className="absolute object-contain -right-11 -bottom-20 hidden md:block"
-                />
-              </div>
+
+                <div className="flex flex-1 flex-col gap-2">
+                  <h3 className="font-clash font-semibold text-(--text) text-2xl leading-tight">
+                    {item.title}
+                  </h3>
+                  <p className="font-clashGrotesk text-sm leading-relaxed text-(--secondarytext) line-clamp-3">
+                    {item.desc}
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between gap-3">
+                  {item.duration && (
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-(--badge-border) bg-(--badge-bg) px-3 py-1.5 font-clashGrotesk text-xs text-(--text)">
+                      <Clock className="size-3.5 text-(--secondarytext)" />
+                      {item.duration}
+                    </span>
+                  )}
+                  <span
+                    aria-label={t("more")}
+                    className="ml-auto grid size-10 shrink-0 place-items-center rounded-full bg-(--button-bg) text-white transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  >
+                    <ArrowUpRight className="size-4.5" />
+                  </span>
+                </div>
+              </Link>
             </AnimatedSection>
           );
         })}

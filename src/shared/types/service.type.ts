@@ -12,7 +12,8 @@ export interface Service {
 export interface IServices {
   id: number;
   icon: string;
-  iconPublicId: string;
+  /** Xizmat jarayonidagi rasm (xizmatlar sahifasi); ikonka — bosh sahifa uchun */
+  image?: string | null;
   localeData: {
     ru: Service;
     uz: Service;

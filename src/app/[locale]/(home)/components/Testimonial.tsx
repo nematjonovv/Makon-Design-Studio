@@ -1,5 +1,6 @@
 "use client";
 
+import { mediaUrl } from "@/shared/utils/mediaUrl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -72,7 +73,7 @@ function Testimonial() {
         <div className="flex justify-between gap-10 flex-col md:flex-row">
           <div className="w-full md:w-1/2">
             {active?.videoUrl ? (
-              <MinimalVideo ref={videoHandleRef} src={active.videoUrl} />
+              <MinimalVideo ref={videoHandleRef} src={mediaUrl(active.videoUrl)} />
             ) : (
               <div className="w-full aspect-video rounded-3xl bg-(--surface)" />
             )}
@@ -81,7 +82,7 @@ function Testimonial() {
           <div className="w-full md:flex-1">
             <div className="flex items-center">
               <Image
-                src={active?.photoUrl || "/avatar.jpg"}
+                src={mediaUrl(active?.photoUrl) || "/avatar.jpg"}
                 className="rounded-xl mr-4"
                 alt="avatar"
                 width={50}
